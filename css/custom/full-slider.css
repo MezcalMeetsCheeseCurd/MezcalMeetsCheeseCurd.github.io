@@ -42,6 +42,9 @@
 
 /* element styling
 */ 
+p { 
+    text-align: justify;
+ }
 
 hr {
     max-width: 50px;

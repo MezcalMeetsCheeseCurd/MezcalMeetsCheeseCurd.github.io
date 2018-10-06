@@ -161,12 +161,12 @@ NumIcons <- iconList(
   "21" = makeIcon(aptha[21], iconWidth = iconWidth, iconHeight = iconHeight)
 )
 
-
-r <- leaflet(data = OaxRex) %>% 
+tileOptions()
+r <- leaflet(data = OaxRex, options = leafletOptions(zoomDelta = 0.25, zoomSnap= 0.25)) %>% 
   setView(lat = 17.065556,lng = -96.723056,zoom = 15) %>% 
-  addTiles(urlTemplate = 'http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png',options = providerTileOptions(detectRetina = T )) %>% 
+  addProviderTiles(providers$Stamen.Toner,options = providerTileOptions(detectRetina = T)) %>% 
   addMarkers(~Long, ~Lat, icon = ~NumIcons[ListNumber], popup = ~X8,label = ~htmlEscape(Name)) 
 
 r
 
-saveWidget(m,file = "./recs_map.html",selfcontained = T)
+saveWidget(r,file = "./rexNum_map.html",selfcontained = T)
